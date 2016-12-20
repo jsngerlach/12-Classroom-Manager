@@ -1,0 +1,68 @@
+<div ng-blur="addingClass=false" ng-show="addingClass" class=" animated tada panel panel-default panel-primary">
+    <div class="panel-heading">+ Add Class
+        <button class="btn btn-xs btn-danger pull-right" ng-click="addingClass=false">x</button>
+    </div>
+    <!--panelBody-->
+    <div class="panel-body">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="NAM">Name</label>
+                    <input ng-model="classGridCtrl.newClass.name" class="form-control" placeholder="Cohort #" id="NM" type="text">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="teach">Teacher</label>
+                    <!-- <input ng-model="classGridCtrl.newClass.teacherId" class="form-control" placeholder="Teacher ID #" id="teach" type="text"> -->
+                    <select ng-options="teacher.teacherId as teacher.name for teacher in classDetailCtrl.teacherOptions" class="form-control" id="sel" ng-model="classDetailCtrl.classEdits.currentTeacher.teacherId">
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="SD">Start Date</label>
+                    <input ng-model="classGridCtrl.newClass.startDate" class="form-control" placeholder="mm/dd/yyyy" id="SD" type="text">
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="ED">End Date</label>
+                    <input ng-model="classGridCtrl.newClass.endDate" class="form-control" placeholder="mm/dd/yyyy" id="ED" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <button ng-click="addingClass=false; classGridCtrl.addClass()" class="btn btn-success btn-sm pull-right">+ Add Class</button>
+    </div>
+</div>
+<button class="pull-right btn btn-lg btn-info clearfix" ng-hide="addingClass" ng-click="addingClass=true">+ Add Class</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Teacher</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Students</th>
+            <th width="1%"></th>
+            <th width="1%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="class in classGridCtrl.classes">
+            <td>{{class.name}}</td>
+            <td>{{class.teacher}}</td>
+            <td>{{class.startDate | date}}</td>
+            <td>{{class.endDate | date}}</td>
+            <td>{{class.count}}</td>
+            <td>
+                <button ui-sref="class.detail({id:{{class.classId}}})" class="btn btn-sm btn-primary">Edit</td>
+            <td>
+                <button ng-click="classGridCtrl.deleteClass(class)" class="btn btn-sm btn-danger">x</td>
+        </tr>
+    </tbody>
+</table>

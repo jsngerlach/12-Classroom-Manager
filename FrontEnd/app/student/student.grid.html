@@ -1,0 +1,59 @@
+
+        <div ng-show="addingStudent" class=" animated tada panel panel-default panel-primary">
+    <div class="panel-heading">+ Add Student
+    <button ng-click="addingStudent=false" class="btn btn-xs btn-danger pull-right">x</button>
+    </div>
+    <!--panelBody-->
+    <div class="panel-body">
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="NAM">Name</label>
+                    <input ng-model="studentGridCtrl.newStudent.name" class="form-control" placeholder="Student Name" id="NM" type="text">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="teach">Email</label>
+                    <input  ng-model="studentGridCtrl.newStudent.emailAddress" class="form-control" placeholder="example@yahoo.com" id="teach" type="text">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="SD">Telephone</label>
+                    <input  ng-model="studentGridCtrl.newStudent.telephone" class="form-control" placeholder="xxx-xxx-xxxx" id="SD" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <button ng-click="addingStudent=false; studentGridCtrl.addStudent()" class="btn btn-success btn-sm pull-right">+ Add Student</button>
+    </div>
+</div>
+<button class="pull-right btn btn-lg btn-info" ng-hide="addingStudent" ng-click="addingStudent=true">+ Add Student</button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                    <th>Classes</th>
+                    <th width="1%"></th>
+                    <th width="1%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in studentGridCtrl.students">
+                    <td>{{student.name}}</td>
+                    <td>{{student.emailAddress}}</td>
+                    <td>{{student.telephone}}</td>
+                    <td>{{student.classes}}</td>
+                    <td> <button  ui-sref="student.detail({id:{{student.studentId}}})" class="btn btn-sm btn-primary">Edit</td>
+                    <td> <button ng-click="studentGridCtrl.deleteStudent(student)" class="btn btn-sm btn-danger">x</td>
+                </tr>
+            </tbody>
+        </table>

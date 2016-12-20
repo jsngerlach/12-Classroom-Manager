@@ -1,0 +1,64 @@
+<!--Panel Head-->
+<div class="panel panel-default panel-primary">
+    <div class="panel-heading">Edit Class : {{classDetailCtrl.classEdits.name}}</div>
+    <!--panelBody-->
+    <div class="panel-body">
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label for="NM">Name</label>
+                        <input ng-model="classDetailCtrl.classEdits.name" class="form-control" placeholder="Cohort #" id="NM" type="text">
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="sel">Teacher</label>
+                        <select ng-options="teacher.teacherId as teacher.name for teacher in classDetailCtrl.teacherOptions" class="form-control" id="sel" ng-model="classDetailCtrl.classEdits.currentTeacher.teacherId">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label for="SD">Start Date</label>
+                        <input ng-model="classDetailCtrl.classEdits.startDate" class="form-control" placeholder="mm/dd/yyyy" id="SD" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-6">
+                        <label for="ED">End Date</label>
+                        <input ng-model="classDetailCtrl.classEdits.endDate" class="form-control" placeholder="mm/dd/yyyy" id="ED" type="text">
+                    </div>
+                </div>
+        </div>
+    </div>
+    <!--Panel Footer-->
+    <div class="panel-footer clearfix">
+        <button class="btn btn-sm btn-primary pull-right" ng-click="classDetailCtrl.editClass(classDetailCtrl.classEdits.classId, classDetailCtrl.classEdits)">Save</button>
+    </div>
+</div>
+<br>
+<div class="panel panel-default panel-primary">
+    <div class="panel-heading">Students</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Telephone</th>
+                    <th>Classes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="student in classDetailCtrl.classStudents">
+                    <td>Jason Gerlach</td>
+                    <td>jsngerlach@yahoo.com</td>
+                    <td>530-953-9196</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</form>

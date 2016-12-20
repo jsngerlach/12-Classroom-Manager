@@ -1,0 +1,58 @@
+<div ng-show="addingTeacher" class=" animated tada panel panel-default panel-primary">
+    <div class="panel-heading">+ Add Teacher
+<button ng-click="addingTeacher=false" class="btn-xs btn btn-danger pull-right">x</button>
+    </div>
+    <!--panelBody-->
+    <div class="panel-body">
+        <div class="row">
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="NAM">Name</label>
+                    <input ng-model="teacherGridCtrl.newTeacher.name" class="form-control" placeholder="Cohort #" id="NM" type="text">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="teach">Email</label>
+                    <input ng-model="teacherGridCtrl.newTeacher.emailAddress" class="form-control" placeholder="example@email.com" id="teach" type="text">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <label for="SD">Telephone</label>
+                    <input ng-model="teacherGridCtrl.newTeacher.telephone" class="form-control" placeholder="mm/dd/yyyy" id="SD" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer clearfix">
+        <button ng-click="addingTeacher=false; teacherGridCtrl.addTeacher()" class="btn btn-success btn-sm pull-right">+ Add Teacher</button>
+    </div>
+</div>
+<button class="pull-right btn btn-lg btn-info" ng-hide="addingTeacher" ng-click="addingTeacher=true">+ Add Teacher</button>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Classes</th>
+            <th width="1%"></th>
+            <th width="1%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="teacher in teacherGridCtrl.teachers">
+            <td>{{teacher.name}}</td>
+            <td>{{teacher.emailAddress}}</td>
+            <td>{{teacher.telephone}}</td>
+            <td>{{teacher.classes}}</td>
+            <td>
+                <button ui-sref="teacher.detail({id:{{teacher.teacherId}}})" class="btn btn-sm btn-primary">Edit</td>
+            <td>
+                <button class="btn btn-sm btn-danger">x</td>
+        </tr>
+    </tbody>
+</table>
